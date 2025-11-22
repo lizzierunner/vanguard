@@ -36,8 +36,8 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 body {
-    line-height: 1;
-    min-width: 400px;
+    line-height: 1.6;
+    min-width: 320px;
     font-family: var(--font);
     background-color: var(--black);
     color: var(--white);
@@ -81,9 +81,14 @@ table {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 .site-header {
     background-color: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 
 }
 .header-inner {
@@ -91,9 +96,10 @@ table {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    flex-wrap: wrap;
 }
 .logo {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 1.5rem);
     font-weight: 700;
 }
 .nav-toggle {
@@ -106,7 +112,12 @@ table {
     padding: 0.5rem 0.75rem;
     font-size: 1.25rem;
     cursor: pointer;
+    transition: all 0.3s ease;
 
+}
+.nav-toggle-label:hover {
+    background-color: var(--charcoal);
+    transform: scale(1.05);
 }
 .nav-toggle-label .bar {
     display: block;
@@ -135,7 +146,21 @@ table {
     flex-direction: column;
     gap: 0.75rem;
     margin-top: 1rem;
+    padding: 1rem 0;
 }
+.main-nav a {
+    padding: 0.5rem;
+    display: block;
+    border-bottom: 4px;
+    transition: background-color 0.3s ease;
+
+}
+.main-nav a:hover,
+.main-nav a:focus {
+    background-color: var(--charcoal);
+    outline: 2-x solid var(--blue);
+}
+
 /* Show menu when checkbox is checked */
 .nav-toggle:checked + .nav-toggle-label + .main-nav {
     display: block;
@@ -145,32 +170,44 @@ table {
 .hero {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
-    height: 80vh;
+    min-height: 60vh;
+    height: clamp(60vh, 80vh, 90vh);
     display: grid;
     place-items: center;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
     overflow: hidden;
 }
 /*HERO TEXT STYLES*/
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3rem);
+    font-size: clamp(1.75rem, 5vw, 3rem);
     font-weight: 700;
     position: relative;
-    padding-left: 4.5rem;
+    padding-left: clamp(3rem, 10vw, 4.5rem);
+    line-height: 1.2;
 }
 .hero p {
     max-width: 40rem;
     margin: 1rem auto 2rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
 }
 /*Primary Button Style*/
 .btn-primary {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
     border-radius: 999px;
     background-color: var(--blue);
     color: var(--white);
     font-weight: 600;
+
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 123, 255, 0.4);
 }
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
@@ -180,18 +217,19 @@ table {
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    width: 3.75rem;
-    height: 3.75rem;
+    width: clamp(2.5rem, 8vw, 3.75rem);
+    height: clamp(2.5rem, 8vw, 3.75rem);
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
 
 }
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     align-items: flex-end;
     justify-content: space-around;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    margin: 0 auto;
     height: 300px;
     width: 100%;
     max-width: 800px;
@@ -200,12 +238,17 @@ table {
 }
 /* ADD ON TRANSITION ON HEIGHT */
 .bar {
-    width: 50px;
+    width: 100%;
+    max-width: 50px;
+    margin: 0 auto;
     background: var(--charcoal);
     border-radius: 10px;
     position: relative;
-    transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out, background-color 0.3s ease;
     height: 0;
+}
+.bar:hover {
+    background-color: var(--blue);
 }
 /* THIS ONE IS DONE FOR YOU */
 .bar::after {
@@ -214,7 +257,8 @@ table {
     bottom: -25px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    white-space: nowrap;
     font-weight: bold;
     color: var(--white);
 }
@@ -231,6 +275,21 @@ table {
     animation: stepUp 1s ease-in-out forwards;
 }
 
+    /*New Breakpoint */
+@media(max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+        padding-left: 3.5rem;
+    }
+    .hero hr1::before {
+       top: 0;
+       left: 50%;
+       transform: translateX(-50%);
+    }
+    #bar-chart {
+        height: 250px;
+}
+
 /* RESULTS LAYOUT (MOBILE FIRST (SMALL) */
 .results-container {
     display: flex;
@@ -241,6 +300,14 @@ table {
 }
 .results-table, .bar-chart {
     text-align: left;
+    width: 100%;
+}
+.results-table {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    min-width: 300px;
 }
 /* MEDIA QUERIES (MEDIUM) */ 
 @media (min-width: 800px) {
@@ -278,6 +345,12 @@ table {
     .hero h1 {
         font-size: 3rem;
     }
+    .container {
+        padding: 0 2rem;
+    }
+    #bar-chart {
+        gap: 1.5rem;
+    }
 }
 /* FORM STYLES */
 form {
@@ -285,15 +358,21 @@ form {
     flex-direction: column;
     gap: 1rem;
     max-width: 500px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 label {
     font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1rem);
 }
 input[type="text"],
 input[type="email"],
 textarea {
-    padding: 0.5rem;
+    padding: 0.75rem;
+    width: 100%;
+    background-color: var(--charcoal);
+    color: var(--white);
     border: 1px solid var(--charcoal);
     border-radius: 5px;
     font-size: 1rem;
@@ -304,11 +383,16 @@ input[type="email"]:focus,
 textarea:focus {
     outline: none;
     border-color: var(--blue);
-    box-shadow: 0 0 5px var(--blue);
+    box-shadow: 0 0 8px var(--blue);
 }
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+/* SUBMIT BUTTON STYLES */
 
 button[type="submit"] {
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     border: none;
     border-radius: 5px;
     background-color: var(--red);
@@ -316,6 +400,8 @@ button[type="submit"] {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(255, 69, 0, 0.4);
 }
 button[type="submit"]:hover {
     background-color: #cc3700;
