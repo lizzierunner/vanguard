@@ -36,7 +36,7 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 body {
-    line-height: 1;
+    line-height: 1.6;
     min-width: 400px;
     font-family: var(--font);
     background-color: var(--black);
@@ -81,6 +81,24 @@ table {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+}
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h3 {
+    font-size: 1.25rem;
+}
+p {
+    margin-bottom: 1rem;
 }
 .site-header {
     background-color: var(--black);
@@ -142,6 +160,10 @@ table {
 }
 
 /* ADD TO "INNOVATION & INVESTMENT SECTION (Photo by Kevin Matos on Unsplash) */
+/* Section Padding */
+section {
+    padding: 3rem 0;
+}
 .hero {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
@@ -163,6 +185,7 @@ table {
     max-width: 40rem;
     margin: 1rem auto 2rem;
 }
+
 /*Primary Button Style*/
 .btn-primary {
     display: inline-block;
@@ -171,6 +194,52 @@ table {
     background-color: var(--blue);
     color: var(--white);
     font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;  /* ADD THIS LINE */
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+/* Expertise Section */
+.expertise {
+    background-color: var(--charcoal);
+    text-align: center;
+}
+.expertise h2 {
+    color: var(--white);
+}
+.expertise p {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Offerings/Services Section */
+.offerings {
+    background-color: var(--black);
+}
+.offerings h2 {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 2rem;
+}
+.offerings ul {
+    display: grid;
+    gap: 1.5rem;
+}
+.offerings li {
+    background-color: var(--charcoal);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--blue);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.offerings li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+.offerings h3 {
+    color: var(--blue);
+    margin-bottom: 0.5rem;
 }
 
 /* ADD FLOATING SVG LOGO BEFORE THE H1 */
@@ -230,6 +299,22 @@ table {
 .bar {
     animation: stepUp 1s ease-in-out forwards;
 }
+/* Results Section */
+#results {
+    background-color: var(--charcoal);
+}
+#results h2 {
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+#results > .container > p {
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* RESULTS LAYOUT (MOBILE FIRST (SMALL) */
 .results-container {
@@ -241,6 +326,37 @@ table {
 }
 .results-table, .bar-chart {
     text-align: left;
+}
+.bar-chart h2 {
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+/* Table Styles */  ← ADD HERE
+table {
+    width: 100%;
+    margin-top: 1rem;
+}
+caption {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--blue);
+    text-align: left;
+}
+thead {
+    background-color: var(--blue);
+    color: var(--white);
+}
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--charcoal);
+}
+tbody tr {
+    background-color: var(--black);
+}
+tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.1);
 }
 /* MEDIA QUERIES (MEDIUM) */ 
 @media (min-width: 800px) {
