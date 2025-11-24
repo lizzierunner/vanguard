@@ -1,77 +1,106 @@
-# vanguard
- Innovation & Investment
- 
+# 📊 Vanguard — GIT 337  
+**Author:** Elizabeth Johnson  
 
-This project is my customized and fully documented version of the Vanguard assignment for GIT 337. It began as a fork of the instructor’s original repository and was expanded, refined, and restructured by me to meet course requirements and demonstrate responsive design, clean HTML/CSS architecture, and professional documentation practices.
-
----
-
-## Project Overview
-This website showcases a clean, modern layout with mobile-first structure, responsive design techniques, and custom styling. It was developed using only HTML and CSS, following best practices for layout organization, typography, spacing, and accessibility.
+Vanguard is my customized, mobile-first, fully documented version of the instructor’s starter project for GIT 337.  
+This project began as a fork of the instructor’s repository and was expanded, cleaned, and restructured by me to demonstrate responsive design, accessible HTML/CSS, and professional documentation practices.
 
 ---
 
-## What This Project Includes
-- Mobile-first page structure  
-- Fully responsive layout  
-- Refined HTML semantics  
-- Updated written content and metadata  
-- Custom CSS improvements in spacing, flow, readability, and section organization  
-- Cleaner button styles, typography updates, and improved color variables  
-- Documentation files (README.md and PROVENANCE.md)  
-- GitHub Pages deployment via `.nojekyll`  
+## 🌟 Project Overview
+This website presents a clean, modern, mobile-first layout with responsive sections, improved hierarchy, and refined CSS structure.  
+All updates to layout, design, spacing, and content were created and implemented by me.
+
+The project includes:
+- Improved HTML semantics  
+- A fully responsive structure  
+- Updated content and metadata  
+- Clean typography and spacing  
+- Revised color variables and UI adjustments  
+- Mobile-first layout improvements  
+- Cleanup of duplicate elements (such as an extra bar-chart block)  
+- Favicon implementation to eliminate browser console 404  
+- `.nojekyll` to ensure GitHub Pages loads correctly  
 
 ---
 
-## Technologies Used
-- HTML5  
-- CSS3  
-- Git & GitHub  
-- VS Code  
-- GitHub Desktop  
-
-No JavaScript is used in this project.
+## 📌 What I Built & Updated
+- Complete mobile-first redesign  
+- Responsive layout improvements across all breakpoints  
+- Cleaned and reorganized HTML structure  
+- Removed a duplicate bar-chart HTML section causing DOM issues  
+- Updated CSS for spacing, readability, and visual hierarchy  
+- Added favicon link to prevent 404 errors  
+- Updated content and text throughout the page  
+- Added final documentation (README.md + PROVENANCE.md)  
+- Performed cleanup of unused code and resolved merge conflicts  
+- Managed Git version control, branching, and merges  
 
 ---
 
-## Project Development Timeline  
-(Matches the Work Log in PROVENANCE.md)
+## 🛠 Technologies Used
+- **HTML5**  
+- **CSS3**  
+- **Git & GitHub**  
+- **VS Code**  
+- **GitHub Desktop**  
 
-### November 23, 2025
-- Final conflict resolution  
-- Cleaned history and completed force-push  
-- Verified GitHub Pages deployment  
-- Final documentation updates  
+⚠️ *No JavaScript is used in this project.*  
+⚠️ *No AI-generated code or written content was used.*  
 
-### November 22, 2025
-- Implemented mobile-first layout  
+Any AI-assisted wording (documentation only) was manually reviewed and approved by me.
+
+---
+
+## 📅 Development Timeline  
+*(Matches PROVENANCE.md)*
+
+### **Nov 24, 2025**
+- Added favicon link to resolve browser 404  
+- Removed duplicate bar-chart HTML block  
+- Final CSS + responsive tuning  
+
+### **Nov 23, 2025**
+- Added complete README and PROVENANCE  
+- Merged remote changes and cleaned repo  
+
+### **Nov 22, 2025**
+- Implemented mobile-first redesign  
 - Improved responsive behavior  
-- Updated text content and styling  
+- Updated text content and layout flow  
 
-### November 18, 2025
+### **Nov 18, 2025**
 - Added `.nojekyll`  
-- Updated index.html  
-- Updated styles.css (min-width rules, overflow fixes, text alignment, readability)  
+- Updated index.html and styles.css  
+- Adjusted spacing, overflow, and readability  
+
+### **Oct 9 & Mar 11 (Instructor)**
+- Initial template and structure  
+- Base HTML, CSS, images (not authored by me)  
 
 ---
 
-## Attribution  
+## 🧾 Attribution
 This project is a fork of the instructor’s original repository:  
 https://github.com/ccarra1/vanguard  
+Licensed under **GPL-3.0**, included in this repository.
 
-Original content (HTML structure, base CSS, images, and initial design system) was created by the instructor and is licensed under GPL-3.0 (included in this repo).
+Instructor contributions include:
+- Initial HTML structure and content  
+- Base CSS and design system  
+- Initial responsive layout foundation  
+- Image assets  
 
-All modifications, reorganizations, and documentation were created by me, Elizabeth Johnson.
-
----
-
-## Academic Integrity  
-- No AI-generated code was used in this project  
-- All HTML and CSS modifications were created manually by me  
-- Documentation text (README and PROVENANCE) was written with the help of ChatGPT but reviewed and approved by me  
-- Code was developed using VS Code and GitHub Desktop  
+All modifications, improvements, and documentation are my own work.
 
 ---
 
-## Live Site  
-If you are using GitHub Pages, your site will be available here after deployment:
+## 🎓 Academic Integrity
+- **No AI-generated code** was used  
+- All HTML and CSS improvements were written manually by me  
+- Documentation text was written with the assistance of ChatGPT but reviewed and approved by me  
+- All development work was performed using VS Code, Git, and GitHub Desktop  
+
+---
+
+## 🔗 Live Site
+Once deployed using GitHub Pages, the site will appear here:  https://lizzierunner.github.io/vanguard/
