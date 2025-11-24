@@ -35,12 +35,18 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
+html{
+    overflow-x: hidden;
+}
+
 body {
     line-height: 1.6;
     min-width: 400px;
     font-family: var(--font);
     background-color: var(--black);
     color: var(--white);
+    overflow-x: hidden;
+    width: 100%;
 }
 a {
     color: inherit;
@@ -78,9 +84,12 @@ table {
 
 /* ADD A DIV WITH THE CLASS OF CONTAINER TO EVERY CONTENT CONTAINER THIS IS ALLOW THE BASE ELEMENTS TO BE 100% WIDTH, BUT CONSTRAIN THE ACTUAL CONTENT TO 90% */
 .container {
-    width: 90%;
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    
 }
 /* Typography */
 h1, h2, h3 {
@@ -102,6 +111,11 @@ p {
 }
 .site-header {
     background-color: var(--black);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    width: 100%;
 
 }
 .header-inner {
@@ -109,9 +123,10 @@ p {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0;
+    flex-wrap: wrap;
 }
 .logo {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 4vw, 1.5rem);
     font-weight: 700;
 }
 .nav-toggle {
@@ -124,7 +139,12 @@ p {
     padding: 0.5rem 0.75rem;
     font-size: 1.25rem;
     cursor: pointer;
+    transition: all 0.3s ease;
 
+}
+.nav-toggle-label:hover {
+    background-color: var(--charcoal);
+    transform: scale(1.05);
 }
 .nav-toggle-label .bar {
     display: block;
@@ -153,7 +173,21 @@ p {
     flex-direction: column;
     gap: 0.75rem;
     margin-top: 1rem;
+    padding: 1rem 0;
 }
+.main-nav a {
+    padding: 0.5rem;
+    display: block;
+    border-bottom: 4px;
+    transition: background-color 0.3s ease;
+
+}
+.main-nav a:hover,
+.main-nav a:focus {
+    background-color: var(--charcoal);
+    outline: 2-x solid var(--blue);
+}
+
 /* Show menu when checkbox is checked */
 .nav-toggle:checked + .nav-toggle-label + .main-nav {
     display: block;
@@ -167,23 +201,27 @@ section {
 .hero {
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('images/vanguard-hero.jpg') no-repeat center center/cover;
-    height: 80vh;
+    min-height: 60vh;
+    height: clamp(60vh, 80vh, 90vh);
     display: grid;
     place-items: center;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem 1rem;
     overflow: hidden;
 }
 /*HERO TEXT STYLES*/
 .hero h1 {
-    font-size: clamp(2.5rem, 5vw, 3rem);
+    font-size: clamp(1.75rem, 5vw, 3rem);
     font-weight: 700;
     position: relative;
-    padding-left: 4.5rem;
+    padding-left: clamp(3rem, 10vw, 4.5rem);
+    line-height: 1.2;
 }
 .hero p {
     max-width: 40rem;
     margin: 1rem auto 2rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    line-height: 1.6;
 }
 
 /*Primary Button Style*/
@@ -249,18 +287,19 @@ section {
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    width: 3.75rem;
-    height: 3.75rem;
+    width: clamp(2.5rem, 8vw, 3.75rem);
+    height: clamp(2.5rem, 8vw, 3.75rem);
     background: url('images/vanguard-logo.svg') no-repeat center/contain;
 
 }
 /* THIS ONE IS DONE FOR YOU */
 #bar-chart {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
     align-items: flex-end;
     justify-content: space-around;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    margin: 0 auto;
     height: 300px;
     width: 100%;
     max-width: 800px;
@@ -269,12 +308,17 @@ section {
 }
 /* ADD ON TRANSITION ON HEIGHT */
 .bar {
-    width: 50px;
+    width: 100%;
+    max-width: 50px;
+    margin: 0 auto;
     background: var(--charcoal);
     border-radius: 10px;
     position: relative;
-    transition: height 0.5s ease-in-out;
+    transition: height 0.5s ease-in-out, background-color 0.3s ease;
     height: 0;
+}
+.bar:hover {
+    background-color: var(--blue);
 }
 /* THIS ONE IS DONE FOR YOU */
 .bar::after {
@@ -283,7 +327,8 @@ section {
     bottom: -25px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    white-space: nowrap;
     font-weight: bold;
     color: var(--white);
 }
@@ -316,6 +361,33 @@ section {
     margin-right: auto;
 }
 
+    /*New Breakpoint */
+@media(max-width: 480px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+    .hero {
+        padding: 1.5rem 0.75rem;
+    }
+    .hero h1 {
+        font-size: 1.5rem;
+        padding-left: 0;
+        padding-top: 3.5rem;
+    }
+    .hero h1::before {
+       top: 0;
+       left: 50%;
+       transform: translateX(-50%);
+    }
+    #bar-chart {
+        height: 250px;
+}
+.offerings li, .card {
+    padding: 1rem;
+
+}
+}
+
 /* RESULTS LAYOUT (MOBILE FIRST (SMALL) */
 .results-container {
     display: flex;
@@ -326,6 +398,14 @@ section {
 }
 .results-table, .bar-chart {
     text-align: left;
+    width: 100%;
+}
+.results-table {
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    min-width: 300px;
 }
 .bar-chart h2 {
     color: var(--white);
@@ -386,6 +466,9 @@ tbody tr:hover {
         gap: 1.5rem;
         margin-top: 0;
     }
+    .offerings ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 
@@ -394,6 +477,12 @@ tbody tr:hover {
     .hero h1 {
         font-size: 3rem;
     }
+    .container {
+        padding: 0 2rem;
+    }
+    #bar-chart {
+        gap: 1.5rem;
+    }
 }
 /* FORM STYLES */
 form {
@@ -401,15 +490,21 @@ form {
     flex-direction: column;
     gap: 1rem;
     max-width: 500px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 label {
     font-weight: 600;
+    font-size: clamp(0.95rem, 2vw, 1rem);
 }
 input[type="text"],
 input[type="email"],
 textarea {
-    padding: 0.5rem;
+    padding: 0.75rem;
+    width: 100%;
+    background-color: var(--charcoal);
+    color: var(--white);
     border: 1px solid var(--charcoal);
     border-radius: 5px;
     font-size: 1rem;
@@ -420,11 +515,16 @@ input[type="email"]:focus,
 textarea:focus {
     outline: none;
     border-color: var(--blue);
-    box-shadow: 0 0 5px var(--blue);
+    box-shadow: 0 0 8px var(--blue);
 }
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+/* SUBMIT BUTTON STYLES */
 
 button[type="submit"] {
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     border: none;
     border-radius: 5px;
     background-color: var(--red);
@@ -432,6 +532,8 @@ button[type="submit"] {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(255, 69, 0, 0.4);
 }
 button[type="submit"]:hover {
     background-color: #cc3700;
@@ -476,3 +578,58 @@ button[type="submit"]:hover {
     display: block;
     height: auto;
 }
+/*Section Styles*/
+section {
+    width: 100%;
+    overflow-x: hidden;
+}
+.expertise, .offerings, .contact {
+    padding: 3rem 0;
+}
+.expertise h2, .offerings h2, .contact h2 {
+    
+    margin-bottom: 2rem;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+
+}
+.expertise p, .offerings p, .contact p {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 2vw, 1.125rem);
+    line-height: 1.6;
+}
+.offerings ul {
+    display:grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.offerings li {
+    background-color: var(--charcoal);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+.offerings li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.offerings h3 {
+    margin-bottom: 0.075rem;
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    color: var(--blue);
+
+}
+/* Footer Styles */
+footer {
+    background-color: var(--charcoal);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    width: 100%;
+}
+footer p {
+    margin: 0.5rem 0;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+
